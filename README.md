@@ -44,12 +44,26 @@ nano checkaffinity.sh
 
 A new text editor will open up. Paste in this checkaffinity.sh script below.
 ```
-# Saves the output of /proc/interrupts in a variable
+#!/bin/bash
+
+# Save the output of /proc/interrupts in a variable
 interrupts=$(cat /proc/interrupts)
 
 # Extract the numbers associated with eth1-0 and eth2-0 using grep and awk
+irqs=$(grep "eth0" /proc/interrupts | awk '{print $1}' | tr -d ':')
 eth1_0=$(echo "$interrupts" | grep "eth1-0" | awk '{print $1}' | tr -d ':')
 eth2_0=$(echo "$interrupts" | grep "eth2-0" | awk '{print $1}' | tr -d ':')
+
+# Display current CPU cores assigned to current IRQs and queues
+for irq in $irqs; do
+    echo "CPU Affinity for ETH0 1gbs LAN $irq is $(cat /proc/irq/$irq/smp_affinity)"
+done
+
+echo "CPU Affinity for ETH1 2.5gbs LAN was $(cat /proc/irq/"$eth1_0"/smp_affinity)"
+echo "CPU Affinity for ETH2 2.5gbs WAN was $(cat /proc/irq/"$eth2_0"/smp_affinity)"
+echo "CPU cores assigned to ETH0 queue rx-0 was: $(cat /sys/class/net/eth0/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH1 queue rx-0 was: $(cat /sys/class/net/eth1/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH2 queue rx-0 was: $(cat /sys/class/net/eth2/queues/rx-0/rps_cpus)"
 ```
 Press CTRL+O to save and exit nano.
 
@@ -58,12 +72,12 @@ You can now run the script with
 ./checkaffinity.sh
 ```
 
-The output tells you your current IRQ CPU Affinites
+The output tells you your current CPU Affiniity for IRQs on all interfaces!
 
+Now you're ready to see the change!
 
-
-
-Then edit the file in /etc/hotplug.d/net/40-net-smp-affinity with
+## The actual fix to optimize NanoPi R6S to go beyond 1400 Mbps w/ cake SQM
+Edit the file in /etc/hotplug.d/net/40-net-smp-affinity with
 
 ```
 nano /etc/hotplug.d/net/40-net-smp-affinity
@@ -106,13 +120,21 @@ friendlyelec,nanopi-r6s)
 
 After you are done editing. Press CTRL+O to save and exit nano.
 
+Reboot your NanoPI R6s. That's all you need to do!
+
+If you followed the previous section and want to check if the CPU affinities did change.
+
+SSH back into your NanoPi R6s and run
+
+```
+./checkaffinity.sh
+```
+It should be different now!
 
 > [!The Old Tutorial]  
-> As of 2024.01.08... I had an [older version of the tutorial](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/OldREADME.md) Tcpu affinity kept geting reverted back to the old values.
-> The new update you're reading above fixes this issue.
+> As of 2024.01.08... I had an [older version of the tutorial](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/OldREADME.md) where the cpu affinity kept geting reverted back to the old values.
+> The new update you're reading above fixes all the reverting issues.
 
-
-Once you're done modifying, Ctrl+O to save... Now you're finished! Now everytime you reboot or change SQM settings the performance tweak is retained!
 
 # Further Explanations
 If you are interested in more information please check out my wiki at https://wiki.stoplagging.com/books/technical-guides/page/sqm-with-nanopi-for-1-gbps-lines-with-openwrt#bkmrk-about-performance-tw
