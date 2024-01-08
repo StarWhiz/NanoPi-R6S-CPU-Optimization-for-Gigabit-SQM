@@ -64,7 +64,17 @@ To run the script do the following command.
 ./performancetweak.sh
 ```
 
-That's all!
+Lastly you might want to have the script run on reboot. 
+
+You can do this by going to System > Startup > Local Startup
+
+and put in the command to run the script above exit 0 pictured below.
+
+```
+/root/./performancetweak.sh
+```
+
+![Start script on boot](/AddingScriptToStartOnReboot.png?raw=true "Start script on boot")
 
 Note: If you restart Smart Queue Management or change SQM settings, it will reset the CPU affinity changes
 and you will need to run the script again with `./performancetweak.sh`
