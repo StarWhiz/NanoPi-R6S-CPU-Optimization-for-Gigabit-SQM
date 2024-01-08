@@ -143,11 +143,11 @@ If you are interested in more information please check out my wiki at https://wi
 
 # Credits
 Credits to https://openwrt.org/docs/guide-user/advanced/load_balancing_-_tuning_smp_irq
-```
+
 And credits to the following people who helped made the document above.
-    mercygroundabyss
-    moeller0
-    walmartshopper
-    xShARkx
-```
+* mercygroundabyss
+* moeller0
+* walmartshopper
+* xShARkx
+
 
