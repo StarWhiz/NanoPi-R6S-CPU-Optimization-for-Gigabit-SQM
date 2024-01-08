@@ -69,3 +69,5 @@ That's all!
 Note: If you restart Smart Queue Management or change SQM settings, it will reset the CPU affinity changes
 and you will need to run the script again with `./performancetweak.sh`
 
+# Further Explanations
+If you are interested in more information please check out my wiki at https://wiki.stoplagging.com/books/technical-guides/page/sqm-with-nanopi-for-1-gbps-lines-with-openwrt#bkmrk-about-performance-tw
