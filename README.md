@@ -140,3 +140,14 @@ It should be different now!
 
 # Further Explanations
 If you are interested in more information please check out my wiki at https://wiki.stoplagging.com/books/technical-guides/page/sqm-with-nanopi-for-1-gbps-lines-with-openwrt#bkmrk-about-performance-tw
+
+# Credits
+Credits to https://openwrt.org/docs/guide-user/advanced/load_balancing_-_tuning_smp_irq
+```
+And credits to the following people who helped made the document above.
+    mercygroundabyss
+    moeller0
+    walmartshopper
+    xShARkx
+```
+
