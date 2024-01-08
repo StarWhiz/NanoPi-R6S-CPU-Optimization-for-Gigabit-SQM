@@ -71,7 +71,7 @@ You can do this by going to System > Startup > Local Startup
 and put in the command to run the script above exit 0 pictured below.
 
 ```
-/root/./performancetweak.sh
+/root/performancetweak.sh
 ```
 
 ![Start script on boot](/AddingScriptToStartOnReboot.png?raw=true "Start script on boot")
