@@ -133,7 +133,7 @@ SSH back into your NanoPi R6s and run
 ```
 It should be different now!
 
-> [!The Old Tutorial]  
+> [!Important]  
 > As of 2024.01.08... I had an [older version of the tutorial](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/OldREADME.md) where the cpu affinity kept geting reverted back to the old values.
 > The new update you're reading above fixes all the reverting issues.
 
