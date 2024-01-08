@@ -25,7 +25,7 @@ You'll see that CPU0-3 on top are the slower CPU cores.
 ```
 
 ## Installing Nano text editor
-To start SSH into your NanoPi R6S. 
+To begin, SSH into your NanoPi R6S. 
 If you don't know how to use vi please install the nano text editor with
 ```
 opkg update
