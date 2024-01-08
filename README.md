@@ -79,7 +79,7 @@ and put in the command to run the script above exit 0 pictured below.
 > [!IMPORTANT]  
 > As of 2024.01.07... The Local Startup script does not work for me. I don't know what the solution is. It runs but the cpu affinity still gets reverted back to the old values.
 
-To solve the problem where everytime we make a change in sqm the cpu affinity gets reverted back.
+I can however solve the other problem where everytime we make a change in sqm the cpu affinity gets reverted back.
 We will need to modify sqm's init.d so that it starts the /root/performancetweak.sh script
 each time a change is made in sqm. To begin...
 
