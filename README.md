@@ -78,7 +78,98 @@ and put in the command to run the script above exit 0 pictured below.
 
 > [!IMPORTANT]  
 > Even though we have the local start up script.... If you restart Smart Queue Management or change SQM settings,
-> it will reset the CPU affinity and you will need to run the script again with ./performancetweak.sh
+> it will reset the CPU affinity and you will need to run the script again with ./performancetweak.sh or continue reading
+> to modify the init.d script of SQM
+
+To solve the problem above we will need to modify sqm's init.d with
+
+```
+nano /etc/init.d/sqm
+```
+
+The original defaults were
+
+```
+#!/bin/sh /etc/rc.common
+
+START=50
+USE_PROCD=1
+
+service_triggers()
+{
+        procd_add_reload_trigger "sqm"
+}
+
+reload_service()
+{
+        stop "$@"
+        start "$@"
+}
+
+start_service()
+{
+        /usr/lib/sqm/run.sh start "$@"
+}
+
+stop_service()
+{
+        /usr/lib/sqm/run.sh stop "$@"
+}
+
+boot()
+{
+        export SQM_VERBOSITY_MIN=5 # Silence errors
+        start "$@"
+}
+```
+
+We will add 
+
+```
+/root/performancetweak.sh
+```
+
+To all the functions like so below
+
+```
+#!/bin/sh /etc/rc.common
+
+START=50
+USE_PROCD=1
+
+service_triggers()
+{
+        procd_add_reload_trigger "sqm"
+}
+
+reload_service()
+{
+        stop "$@"
+        start "$@"
+        /root/performancetweak.sh
+}
+
+start_service()
+{
+        /usr/lib/sqm/run.sh start "$@"
+        /root/performancetweak.sh
+}
+
+stop_service()
+{
+        /usr/lib/sqm/run.sh stop "$@"
+        /root/performancetweak.sh
+}
+
+boot()
+{
+        export SQM_VERBOSITY_MIN=5 # Silence errors
+        start "$@"
+        /root/performancetweak.sh
+}
+```
+
+Finished! Now everytime you reboot or change SQM settings the performance tweak is retained!
 
 # Further Explanations
 If you are interested in more information please check out my wiki at https://wiki.stoplagging.com/books/technical-guides/page/sqm-with-nanopi-for-1-gbps-lines-with-openwrt#bkmrk-about-performance-tw
