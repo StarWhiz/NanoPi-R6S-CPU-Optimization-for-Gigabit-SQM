@@ -76,8 +76,9 @@ and put in the command to run the script above exit 0 pictured below.
 
 ![Start script on boot](/AddingScriptToStartOnReboot.png?raw=true "Start script on boot")
 
-Note: If you restart Smart Queue Management or change SQM settings, it will reset the CPU affinity changes
-and you will need to run the script again with `./performancetweak.sh`
+> [!IMPORTANT]  
+> Even though we have the local start up script.... If you restart Smart Queue Management or change SQM settings,
+> it will reset the CPU affinity and you will need to run the script again with ./performancetweak.sh
 
 # Further Explanations
 If you are interested in more information please check out my wiki at https://wiki.stoplagging.com/books/technical-guides/page/sqm-with-nanopi-for-1-gbps-lines-with-openwrt#bkmrk-about-performance-tw
