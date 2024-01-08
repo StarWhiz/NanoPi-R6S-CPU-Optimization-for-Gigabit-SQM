@@ -32,6 +32,8 @@ opkg update
 opkg  install nano
 ```
 
+From here you can skip to this [section](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/README.md#the-actual-fix-to-optimize-nanopi-r6s-to-go-beyond-1400-mbps-w-cake-sqm) if you're not interested in checking if the solution worked or not and want to speedrun this. Otherwise, continue reading.
+
 ## How to check the current IRQ CPU affinitys
 You don't need to do this step but it helps you confirm if your CPU affinity is indeed fixed.
 
