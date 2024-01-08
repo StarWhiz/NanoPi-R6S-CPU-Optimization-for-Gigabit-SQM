@@ -81,7 +81,8 @@ and put in the command to run the script above exit 0 pictured below.
 > it will reset the CPU affinity and you will need to run the script again with ./performancetweak.sh to solve this
 > continue reading to modify the init.d script of SQM
 
-To solve the problem above we will need to modify sqm's init.d with
+To solve the problem above we will need to modify sqm's init.d so that it starts the /root/performancetweak.sh script
+each time a change is made in sqm. To begin...
 
 ```
 nano /etc/init.d/sqm
