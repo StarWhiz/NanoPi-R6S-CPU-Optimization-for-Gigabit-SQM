@@ -149,6 +149,6 @@ Credits to the following people who helped made the openwrt document linked here
 * walmartshopper
 * xShARkx
 
-This allowed me to come up with the solution for the R6S. Thank you!
+This allowed me to come up with a better solution for the R6S. Thank you!
 
 
