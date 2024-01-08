@@ -67,5 +67,5 @@ To run the script do the following command.
 That's all!
 
 Note: If you restart Smart Queue Management or change SQM settings, it will reset the CPU affinity changes
-and you will need to run the script again with ./performancetweak.sh
+and you will need to run the script again with `./performancetweak.sh`
 
