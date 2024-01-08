@@ -78,8 +78,8 @@ and put in the command to run the script above exit 0 pictured below.
 
 > [!IMPORTANT]  
 > Even though we have the local start up script.... If you restart Smart Queue Management or change SQM settings,
-> it will reset the CPU affinity and you will need to run the script again with ./performancetweak.sh or continue reading
-> to modify the init.d script of SQM
+> it will reset the CPU affinity and you will need to run the script again with ./performancetweak.sh to solve this
+> continue reading to modify the init.d script of SQM
 
 To solve the problem above we will need to modify sqm's init.d with
 
