@@ -78,6 +78,7 @@ and put in the command to run the script above exit 0 pictured below.
 
 > [!IMPORTANT]  
 > As of 2024.01.07... The Local Startup script does not work for me. I don't know what the solution is. It runs but the cpu affinity still gets reverted back to the old values.
+> If you have a solution please post in https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/issues/1
 
 I can however solve the other problem where everytime we make a change in sqm the cpu affinity gets reverted back.
 We will need to modify sqm's init.d so that it starts the /root/performancetweak.sh script
