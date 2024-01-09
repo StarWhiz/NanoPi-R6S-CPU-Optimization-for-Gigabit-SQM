@@ -106,7 +106,9 @@ friendlyelec,nanopi-r6s)
 ```
 
 You have two options to replace the above with.
-Option #1 This option below if you have equal upload and download from your ISP
+
+**Option #1** This option below if you have equal upload and download from your ISP
+If you don't know which one to pick this one is a safe bet.
 
 ```
 set_interface_core 1 "eth0"
@@ -125,7 +127,7 @@ set_interface_core 1 "eth0"
 	;;
 ```
 
-Option #2 This option below if you're download is way higher than download 
+**Option #2** This option below if you're download is way higher than download 
 like 1200Mbps Down / 40 Mbps from your ISP. The only difference is we
 borrow CPU7 reserved for uploads to help CPU6 on the downloads.
 
