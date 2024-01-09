@@ -79,6 +79,10 @@ The output tells you your current CPU Affiniity for IRQs on all interfaces!
 Now you're ready to see the change!
 
 ## The actual fix to optimize NanoPi R6S to go beyond 1400 Mbps w/ cake SQM
+Please note this assumes you're primarily using ETH1 as 2.5gbps LAN and ETH2 as 2.5gpbs WAN.
+
+Okay let's begin!
+
 Edit the file in /etc/hotplug.d/net/40-net-smp-affinity with
 
 ```
@@ -101,23 +105,45 @@ friendlyelec,nanopi-r6s)
         ;;
 ```
 
-You want to modify the numbers 2 4 and 8 above to, f0, 30, and c0 as shown below.
-Then do ff for all the queues. Alternatively just copy paste the code below to replace
-the original code above.
+You have two options to replace the above with.
+Option #1 This option below if you have equal upload and download from your ISP
 
 ```
-friendlyelec,nanopi-r6s)
-        set_interface_core f0 "eth0"
-        echo ff > /sys/class/net/eth0/queues/rx-0/rps_cpus
-        set_interface_core 30 "eth1-0"
-        set_interface_core 30 "eth1-16"
-        set_interface_core 30 "eth1-18"
-        echo ff > /sys/class/net/eth1/queues/rx-0/rps_cpus
-        set_interface_core c0 "eth2-0"
-        set_interface_core c0 "eth2-16"
-        set_interface_core c0 "eth2-18"
-        echo ff > /sys/class/net/eth2/queues/rx-0/rps_cpus
-        ;;
+set_interface_core 1 "eth0"
+	echo 2 > /sys/class/net/eth0/queues/rx-0/rps_cpus
+	echo 2 > /sys/class/net/eth0/queues/tx-0/xps_cpus
+	set_interface_core 4 "eth1-0"
+	set_interface_core 4 "eth1-16"
+	set_interface_core 4 "eth1-18"
+	echo 10 > /sys/class/net/eth1/queues/rx-0/rps_cpus
+	echo 20 > /sys/class/net/eth1/queues/tx-0/xps_cpus
+	set_interface_core 8 "eth2-0"
+	set_interface_core 8 "eth2-16"
+	set_interface_core 8 "eth2-18"
+	echo 40 > /sys/class/net/eth2/queues/rx-0/rps_cpus
+	echo 80 > /sys/class/net/eth2/queues/tx-0/xps_cpus
+	;;
+```
+
+Option #2 This option below if you're download is way higher than download 
+like 1200Mbps Down / 40 Mbps from your ISP. The only difference is we
+borrow CPU7 reserved for uploads to help CPU6 on the downloads.
+
+```
+set_interface_core 1 "eth0"
+	echo 2 > /sys/class/net/eth0/queues/rx-0/rps_cpus
+	echo 2 > /sys/class/net/eth0/queues/tx-0/xps_cpus
+	set_interface_core 4 "eth1-0"
+	set_interface_core 4 "eth1-16"
+	set_interface_core 4 "eth1-18"
+	echo 10 > /sys/class/net/eth1/queues/rx-0/rps_cpus
+	echo 20 > /sys/class/net/eth1/queues/tx-0/xps_cpus
+	set_interface_core 8 "eth2-0"
+	set_interface_core 8 "eth2-16"
+	set_interface_core 8 "eth2-18"
+	echo c0 > /sys/class/net/eth2/queues/rx-0/rps_cpus
+	echo 80 > /sys/class/net/eth2/queues/tx-0/xps_cpus
+	;;
 ```
 
 After you are done editing. Press CTRL+O to save and exit nano.
