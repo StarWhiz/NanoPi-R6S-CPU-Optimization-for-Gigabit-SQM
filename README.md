@@ -2,7 +2,17 @@
 The NanoPi R6S's default setting for some reason overutilizes the 4 slower A55 cores for both queues and IRQs.
 This causes cake SQM to not be able to push past 800 Mbps.
 
-This tutorial helps you fix that by separating all individual 4 faster A76 cores into each queue and slower A55 cores into each IRQ
+You can figure this out by running the [Waveform Bufferbloat Test] (https://www.waveform.com/tools/bufferbloat)
+And monitoring your CPU Cores usage with `htop` you'll see some cores hitting close to 100%.
+
+If you don't have htop you can install it with
+```
+opkg update
+opkg install htop
+htop
+```
+
+This tutorial helps you fix that by separating all individual 4 faster A76 cores into each queue and slower A55 cores into each IRQ on your interfances
 
 For reference the faster A76 Cores are CPU# 5, 6, 7, and 8. While the slower A55 Cores are CPU # 0, 1, 2, and 3
 
@@ -77,8 +87,6 @@ The output tells you your current CPU Affiniity for IRQs on all interfaces!
 Now you're ready to see the change!
 
 ## The actual fix to optimize NanoPi R6S to go beyond 1400 Mbps w/ cake SQM
-Please note this assumes you're primarily using ETH1 as 2.5gbps LAN and ETH2 as 2.5gpbs WAN.
-
 Okay let's begin!
 
 Edit the file in /etc/hotplug.d/net/40-net-smp-affinity with
@@ -103,14 +111,12 @@ friendlyelec,nanopi-r6s)
         ;;
 ```
 
-You have two options to replace the above with.
+You have a few options to replace the above with.
 
-**Option #1** This option below if you have equal upload and download from your ISP
-
-If you don't know which one to pick this one is a safe bet.
-
+**Option #1a** This is a standard option if you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)
 ```
-set_interface_core 1 "eth0"
+friendlyelec,nanopi-r6s)
+	set_interface_core 1 "eth0"
 	echo 2 > /sys/class/net/eth0/queues/rx-0/rps_cpus
 	echo 2 > /sys/class/net/eth0/queues/tx-0/xps_cpus
 	set_interface_core 4 "eth1-0"
@@ -125,13 +131,30 @@ set_interface_core 1 "eth0"
 	echo 80 > /sys/class/net/eth2/queues/tx-0/xps_cpus
 	;;
 ```
-
-**Option #2** This option below if you're download is way higher than download 
-like 1200Mbps Down / 40 Mbps from your ISP. The only difference is we
-borrow CPU7 reserved for uploads to help CPU6 on the downloads.
-
+**Option #2** This is a standard option if you're using all the eth ports: eth0, eth1, eth2
 ```
-set_interface_core 1 "eth0"
+friendlyelec,nanopi-r6s)
+	set_interface_core 1 "eth0"
+	echo c0 > /sys/class/net/eth0/queues/rx-0/rps_cpus
+	echo 30 > /sys/class/net/eth0/queues/tx-0/xps_cpus
+	set_interface_core 2 "eth1-0"
+	set_interface_core 2 "eth1-16"
+	set_interface_core 2 "eth1-18"
+	echo c0 > /sys/class/net/eth1/queues/rx-0/rps_cpus
+	echo 30 > /sys/class/net/eth1/queues/tx-0/xps_cpus
+	set_interface_core c "eth2-0"
+	set_interface_core c "eth2-16"
+	set_interface_core c "eth2-18"
+	echo c0 > /sys/class/net/eth2/queues/rx-0/rps_cpus
+	echo 30 > /sys/class/net/eth2/queues/tx-0/xps_cpus
+	;;
+```
+
+**Option #1b**: This is a variation of 1a for asymmetrical WAN. (Example: 1200Mbps Down / 40 Mbps from your ISP)
+It assumes you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)
+```
+friendlyelec,nanopi-r6s)
+	set_interface_core 1 "eth0"
 	echo 2 > /sys/class/net/eth0/queues/rx-0/rps_cpus
 	echo 2 > /sys/class/net/eth0/queues/tx-0/xps_cpus
 	set_interface_core 4 "eth1-0"
