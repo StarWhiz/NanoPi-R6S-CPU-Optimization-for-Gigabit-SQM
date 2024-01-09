@@ -1,10 +1,8 @@
 # Introduction
-For the NanoPi R6S's firmware, the default setting assigned 4x slower A55 cores for IRQs on ETH2. 
-2x slower A55 cores for IRQs on ETH1. And 1x slower A55 slow core for IRQs on Eth1.
+The NanoPi R6S's default setting for some reason overutilizes the 4 slower A55 cores for both queues and IRQs.
 This causes cake SQM to not be able to push past 800 Mbps.
 
-This tutorial helps you fix that and by assigning the faster A76 cores for IRQs in ETH0 (1gbps LAN) ETH1 (2.5gbps LAN) and ETH2 (2.5gbps WAN).
-AFter doing so you should be able to easily push cake SQM beyond 1400 Mbps.
+This tutorial helps you fix that by separating all individual 4 faster A76 cores into each queue and slower A55 cores into each IRQ
 
 For reference the faster A76 Cores are CPU# 5, 6, 7, and 8. While the slower A55 Cores are CPU # 0, 1, 2, and 3
 
