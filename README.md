@@ -151,6 +151,7 @@ friendlyelec,nanopi-r6s)
 ```
 
 **Option #1b**: This is a variation of 1a for asymmetrical WAN. (Example: 1200Mbps Down / 40 Mbps from your ISP)
+
 It assumes you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)
 ```
 friendlyelec,nanopi-r6s)
