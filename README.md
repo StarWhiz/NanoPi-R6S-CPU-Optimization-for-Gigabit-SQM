@@ -108,6 +108,7 @@ friendlyelec,nanopi-r6s)
 You have two options to replace the above with.
 
 **Option #1** This option below if you have equal upload and download from your ISP
+
 If you don't know which one to pick this one is a safe bet.
 
 ```
