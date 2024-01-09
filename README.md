@@ -176,6 +176,8 @@ Credits to the following people who helped made the openwrt document linked here
 * walmartshopper
 * xShARkx
 
+Credits to [choppyc](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/87?u=starwhiz) for the alternative smp-affinities
+
 This allowed me to come up with a better solution for the R6S. Thank you!
 
 
