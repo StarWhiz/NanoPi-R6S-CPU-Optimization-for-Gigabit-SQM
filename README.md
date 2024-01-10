@@ -132,7 +132,9 @@ friendlyelec,nanopi-r6s)
 	;;
 ```
 
-**Option #2a** This is a standard option if you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)... and not the 1gbps port: eth0
+**Option #2a** This is a non-standard option for if you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)... and not the 1gbps port: eth0
+
+I believe it is more optimized if you only want to use eth1 and eth2.
 ```
 friendlyelec,nanopi-r6s)
 	set_interface_core 1 "eth0"
