@@ -113,25 +113,7 @@ friendlyelec,nanopi-r6s)
 
 You have a few options to replace the above with.
 
-**Option #1a** This is a standard option if you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)
-```
-friendlyelec,nanopi-r6s)
-	set_interface_core 1 "eth0"
-	echo 2 > /sys/class/net/eth0/queues/rx-0/rps_cpus
-	echo 2 > /sys/class/net/eth0/queues/tx-0/xps_cpus
-	set_interface_core 4 "eth1-0"
-	set_interface_core 4 "eth1-16"
-	set_interface_core 4 "eth1-18"
-	echo 10 > /sys/class/net/eth1/queues/rx-0/rps_cpus
-	echo 20 > /sys/class/net/eth1/queues/tx-0/xps_cpus
-	set_interface_core 8 "eth2-0"
-	set_interface_core 8 "eth2-16"
-	set_interface_core 8 "eth2-18"
-	echo 40 > /sys/class/net/eth2/queues/rx-0/rps_cpus
-	echo 80 > /sys/class/net/eth2/queues/tx-0/xps_cpus
-	;;
-```
-**Option #2** This is a standard option if you're using all the eth ports: eth0, eth1, eth2
+**Option #1** This is a standard option if you're using all the eth ports: eth0, eth1, eth2. When in doubt pick this one.
 ```
 friendlyelec,nanopi-r6s)
 	set_interface_core 1 "eth0"
@@ -150,8 +132,26 @@ friendlyelec,nanopi-r6s)
 	;;
 ```
 
-**Option #1b**: This is a variation of 1a for asymmetrical WAN. (Example: 1200Mbps Down / 40 Mbps from your ISP)
+**Option #2a** This is a standard option if you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)... and not the 1gbps port: eth0
+```
+friendlyelec,nanopi-r6s)
+	set_interface_core 1 "eth0"
+	echo 2 > /sys/class/net/eth0/queues/rx-0/rps_cpus
+	echo 2 > /sys/class/net/eth0/queues/tx-0/xps_cpus
+	set_interface_core 4 "eth1-0"
+	set_interface_core 4 "eth1-16"
+	set_interface_core 4 "eth1-18"
+	echo 10 > /sys/class/net/eth1/queues/rx-0/rps_cpus
+	echo 20 > /sys/class/net/eth1/queues/tx-0/xps_cpus
+	set_interface_core 8 "eth2-0"
+	set_interface_core 8 "eth2-16"
+	set_interface_core 8 "eth2-18"
+	echo 40 > /sys/class/net/eth2/queues/rx-0/rps_cpus
+	echo 80 > /sys/class/net/eth2/queues/tx-0/xps_cpus
+	;;
+```
 
+**Option #2b**: This is a variation of 2a for asymmetrical WAN. (Example: 1200Mbps Down / 40 Mbps from your ISP)
 It assumes you're only using the 2.5gbps ports: eth1 (LAN) and eth2 (WAN)
 ```
 friendlyelec,nanopi-r6s)
