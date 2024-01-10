@@ -135,7 +135,7 @@ friendlyelec,nanopi-r6s)
 ```
 friendlyelec,nanopi-r6s)
 	set_interface_core 1 "eth0"
-	echo c8 > /sys/class/net/eth0/queues/rx-0/rps_cpus
+	echo c0 > /sys/class/net/eth0/queues/rx-0/rps_cpus
 	echo 30 > /sys/class/net/eth0/queues/tx-0/xps_cpus
 	set_interface_core 2 "eth1-0"
 	set_interface_core 2 "eth1-16"
