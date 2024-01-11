@@ -37,7 +37,7 @@ Selected=1
 ![Enter Installation Mode](./installationmode.png)
 
 ## Flash!
-Double click on RKDevTool.exe, you will see a “Found One Maskrom device” message on the utility. Click on the "Run", wait a moment and it will be installed.
+Double click on RKDevTool.exe that's in the same location you just changed the language in, you will see a “Found One Maskrom device” message on the utility. Click on the "Run", wait a moment and it will be installed.
 
 ![Flash!](./flashing.gif)
 
