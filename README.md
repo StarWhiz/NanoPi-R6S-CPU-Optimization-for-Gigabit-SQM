@@ -1,11 +1,11 @@
+To follow this tutorial you just need to understand how to SSH into your router. If you're on Windows this is very easy. Just download and install Putty. Then type in the router's IP in "Hostname" and click "Open". Login with the same password as the web GUI.
+
 # Introduction
 The NanoPi R6S's default setting for some reason overutilizes the 4 slower A55 cores for both queues and IRQs.
 This causes cake SQM to not be able to push past 800 Mbps.
 
 You can figure this out by running the [Waveform Bufferbloat Test] (https://www.waveform.com/tools/bufferbloat)
 And monitoring your CPU Cores usage with `htop` you'll see some cores hitting close to 100%.
-
-To follow this tutorial you just need to understand how to SSH into your router. If you're on Windows this is very easy. Just download and install Putty. Then type in the router's IP in "Hostname" and click "Open". Login with the same password as the web GUI.
 
 If you don't have htop you can install it with
 ```
