@@ -71,15 +71,32 @@ done
 
 echo "CPU Affinity for ETH1 2.5gbs LAN was $(cat /proc/irq/"$eth1_0"/smp_affinity)"
 echo "CPU Affinity for ETH2 2.5gbs WAN was $(cat /proc/irq/"$eth2_0"/smp_affinity)"
-echo "CPU cores assigned to ETH0 queue rx-0 was: $(cat /sys/class/net/eth0/queues/rx-0/rps_cpus)"
-echo "CPU cores assigned to ETH1 queue rx-0 was: $(cat /sys/class/net/eth1/queues/rx-0/rps_cpus)"
-echo "CPU cores assigned to ETH2 queue rx-0 was: $(cat /sys/class/net/eth2/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH0 queue rx-0 is: $(cat /sys/class/net/eth0/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH1 queue rx-0 is: $(cat /sys/class/net/eth1/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH2 queue rx-0 is: $(cat /sys/class/net/eth2/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH0 queue tx-0 is: $(cat /sys/class/net/eth0/queues/tx-0/xps_cpus)"
+echo "CPU cores assigned to ETH1 queue tx-0 is: $(cat /sys/class/net/eth1/queues/tx-0/xps_cpus)"
+echo "CPU cores assigned to ETH2 queue tx-0 is: $(cat /sys/class/net/eth2/queues/tx-0/xps_cpus)"
 ```
 Press CTRL+O to save and exit nano.
 
 You can now run the script with
 ```
 ./checkaffinity.sh
+```
+
+**The default output from ./checkaffinity.sh**
+```
+CPU Affinity for ETH0 1gbs LAN 63 is 02
+CPU Affinity for ETH0 1gbs LAN 64 is ff
+CPU Affinity for ETH1 2.5gbs LAN was 04
+CPU Affinity for ETH2 2.5gbs WAN was 08
+CPU cores assigned to ETH0 queue rx-0 is: fe
+CPU cores assigned to ETH1 queue rx-0 is: fe
+CPU cores assigned to ETH2 queue rx-0 is: fe
+CPU cores assigned to ETH0 queue tx-0 is: 00
+CPU cores assigned to ETH1 queue tx-0 is: 00
+CPU cores assigned to ETH2 queue tx-0 is: 00
 ```
 
 The output tells you your current CPU Affiniity for IRQs on all interfaces!
@@ -184,7 +201,25 @@ SSH back into your NanoPi R6s and run
 ```
 ./checkaffinity.sh
 ```
-It should be different now!
+
+It should be different from before and similar to the values you had just set in eithe option 1, 2a or 2b!
+
+**output of option 1**
+```
+CPU Affinity for ETH0 1gbs LAN 63 is 01
+CPU Affinity for ETH0 1gbs LAN 64 is ff
+CPU Affinity for ETH1 2.5gbs LAN was 02
+CPU Affinity for ETH2 2.5gbs WAN was 04
+CPU cores assigned to ETH0 queue rx-0 is: c0
+CPU cores assigned to ETH1 queue rx-0 is: c0
+CPU cores assigned to ETH2 queue rx-0 is: c0
+CPU cores assigned to ETH0 queue tx-0 is: 30
+CPU cores assigned to ETH1 queue tx-0 is: 30
+CPU cores assigned to ETH2 queue tx-0 is: 30
+```
+
+That's it! Congratulations. Go ahead and test out cake SQM at higher bandwidths!
+
 
 > [!Important]  
 > As of 2024.01.08... I had an [older version of the tutorial](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/OldREADME.md) where the cpu affinity kept geting reverted back to the old values.
@@ -205,5 +240,3 @@ Credits to the following people who helped made the openwrt document linked here
 Credits to [choppyc](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/87?u=starwhiz) for the alternative smp-affinities
 
 This allowed me to come up with a better solution for the R6S. Thank you!
-
-
