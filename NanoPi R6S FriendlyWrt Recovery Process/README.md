@@ -12,13 +12,13 @@ Requirements
 
 
 ## RKFlasher Language Change
-Change the language by editing config.ini and changing the "Selected" portion from 2 to 1
+Change the language by editing config.ini and changing the "Selected" portion from 1 to 2
 
 ```
 ...
 [Language]
 Kinds=2
-Selected=2
+Selected=1
 ...
 ```
 
@@ -27,7 +27,7 @@ To
 ...
 [Language]
 Kinds=2
-Selected=1
+Selected=2
 ...
 ```
 
