@@ -86,3 +86,5 @@ CPU cores assigned to ETH1 queue rx-0 is: 20
 CPU cores assigned to ETH0 queue tx-0 is: 00
 ```
 Congratulations. Enjoy your 780-800 Mbps cake SQM!
+
+Credits to [choppyc](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/94?u=starwhiz) on the openWrt forums. I wouldn't have found out the R4S could be further improved otherwise.
