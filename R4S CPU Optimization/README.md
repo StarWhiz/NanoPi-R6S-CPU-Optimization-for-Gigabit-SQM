@@ -1,6 +1,6 @@
 # Performance Tweak for R4S
 
-This guide is based on my [main guide](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM) but for the R4S instead.
+This guide is based on my [main guide for the R6S](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM) except this guide is for the R4S instead.
 
 Please read that for full understanding. Otherwise let's just get on to it! This won't be as detailed as my main guide, but you sure can speed run this!
 
