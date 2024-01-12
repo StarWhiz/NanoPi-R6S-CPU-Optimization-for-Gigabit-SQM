@@ -1,4 +1,5 @@
 R4S Owners Read [here](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/R4S%20CPU%20Optimization) instead.
+
 To follow this tutorial you just need to understand how to SSH into your router. If you're on Windows this is very easy. Just download and install Putty. Then type in the router's IP in "Hostname" and click "Open". Login with the same password as the web GUI.
 
 # Introduction
