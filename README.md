@@ -222,6 +222,9 @@ CPU cores assigned to ETH2 queue tx-0 is: 30
 
 That's it! Congratulations. Go ahead and test out cake SQM at higher bandwidths!
 
+# Optimizing NanoPi R4S
+If you want to optimize a NanoPi R4S and not a R6S please read [here](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/R4S%20CPU%20Optimization).
+I was able to push from 630 Mbps cake SQM to almost 800 Mbps cake SQM with similar mods.
 
 > [!Important]  
 > As of 2024.01.08... I had an [older version of the tutorial](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/OldREADME.md) where the cpu affinity kept geting reverted back to the old values.
