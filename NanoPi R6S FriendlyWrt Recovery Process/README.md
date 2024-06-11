@@ -35,6 +35,7 @@ Selected=2
 
 ## Enter installation mode
 ![Enter Installation Mode](./installationmode.png)
+Note: TF Card is the MicroSD card...
 
 ## Flash!
 Double click on RKDevTool.exe that's in the same location you just changed the language in, you will see a “Found One Maskrom device” message on the utility. Click on the "Run", wait a moment and it will be installed.
