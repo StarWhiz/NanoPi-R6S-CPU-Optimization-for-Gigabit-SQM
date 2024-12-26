@@ -38,8 +38,6 @@ echo "CPU Affinity for ETH0 1gbps WAN is $(cat /proc/irq/$eth1_0/smp_affinity)"
 echo "CPU Affinity for ETH2 1gbps LAN is $(cat /proc/irq/"$eth1_1"/smp_affinity)"
 echo "CPU cores assigned to ETH0 queue rx-0 is: $(cat /sys/class/net/eth0/queues/rx-0/rps_cpus)"
 echo "CPU cores assigned to ETH1 queue rx-0 is: $(cat /sys/class/net/eth1/queues/rx-0/rps_cpus)"
-echo "CPU cores assigned to ETH0 queue tx-0 is: $(cat /sys/class/net/eth0/queues/tx-0/xps_cpus)"
-echo "CPU cores assigned to ETH1 queue tx-0 is: $(cat /sys/class/net/eth1/queues/tx-0/xps_cpus)"
 ```
 Run the script to check current affinity
 ```
@@ -83,7 +81,6 @@ CPU Affinity for ETH0 1gbps WAN is 04
 CPU Affinity for ETH2 1gbps LAN is 08
 CPU cores assigned to ETH0 queue rx-0 is: 10
 CPU cores assigned to ETH1 queue rx-0 is: 20
-CPU cores assigned to ETH0 queue tx-0 is: 00
 ```
 Congratulations. Enjoy your 780-800 Mbps cake SQM!
 
