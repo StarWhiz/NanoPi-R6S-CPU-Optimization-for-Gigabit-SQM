@@ -1,8 +1,14 @@
+# Other Guides
+* [How to flash official OpenWrt image to R6S eMMC](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/How%20To%20Flash%20Official%20OpenWrt%20To%20R6S%20eMMC)
+	* If you use the official OpenWrt image for your Nano Pi the performance tweaks below are not needed.
+* [NanoPi R6S FriendlyWrt Recovery Process](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/NanoPi%20R6S%20FriendlyWrt%20Recovery%20Process)
+  	* For unbricking your Nano Pi. Requires usb-A male to usb-A male cable.
+
+# The performance tweak introduction
 R4S Owners Read [here](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/R4S%20CPU%20Optimization) instead.
 
 To follow this tutorial you just need to understand how to SSH into your router. If you're on Windows this is very easy. Just download and install Putty. Then type in the router's IP in "Hostname" and click "Open". Login with the same password as the web GUI.
 
-# Introduction
 The NanoPi R6S's default setting for some reason overutilizes the 4 slower A55 cores for both queues and IRQs.
 This causes cake SQM to not be able to push past 800 Mbps.
 
