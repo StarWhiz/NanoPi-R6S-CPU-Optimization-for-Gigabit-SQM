@@ -58,7 +58,7 @@ nano checkaffinity.sh
 
 A new text editor will open up. Paste in this checkaffinity.sh script below.
 ```
-#!/bin/bash
+#!/bin/sh
 
 # Save the output of /proc/interrupts in a variable
 interrupts=$(cat /proc/interrupts)
