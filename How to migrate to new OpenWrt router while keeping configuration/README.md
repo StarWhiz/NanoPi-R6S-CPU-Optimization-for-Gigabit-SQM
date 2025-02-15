@@ -1,5 +1,7 @@
 # Introduction
-This guide is more written for my own sake as of 2025.02.15. It explains how to migrate from one OpenWrt router to another while keeping your configurations such as your custom: Port Forwards, Static IPs, and DNS hostnames.
+This guide is more written for my own sake as of 2025.02.15 but could help others out.
+
+It explains how to migrate from one OpenWrt router to another while keeping your configurations such as your custom: Port Forwards, Static IPs, and DNS hostnames.
 
 # Backing up configuration files
 All config files are located in `/etc/config`.
@@ -89,7 +91,7 @@ config interface 'lan'
 	option ip6assign '60'
 	option ipaddr '192.168.2.1'
 ```
-This is all it takes to migrate all the configs over.
+This is all it takes to migrate all the configs over. Reboot to apply configs.
 
 # Check actual DNS service is updated
 * For me that means checking my namecheap.com to see if things are pointing to the right public IP. I have DDNS so not much to change.
@@ -174,3 +176,4 @@ Binary   = hex ## = cpu core
 01000000 = hex 40 = cpu core 6 (A76) selected
 10000000 = hex 80 = cpu core 7 (A76) selected
 ```
+Confirm by running htop to watch CPU usage while bandwidth is under full load with speedtest.
