@@ -3,6 +3,10 @@
 	* If you use the official OpenWrt image for your Nano Pi the performance tweaks below are not needed.
 * [NanoPi R6S FriendlyWrt Recovery Process](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/NanoPi%20R6S%20FriendlyWrt%20Recovery%20Process)
   	* For unbricking your Nano Pi. Requires usb-A male to usb-A male cable.
+* [How to migrate from one OpenWrt Router to another OpenWrt Router while keeping configurations](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/How%20to%20migrate%20to%20new%20OpenWrt%20router%20while%20keeping%20configuration)
+ 	* For when you want to migrate your own: Static IP configs, DNS hostnames, and Port forwards over to the new router
+	* Also includes how I do SQM configuration
+   	* Was more written for my own sake but could help others.
 
 # The performance tweak introduction
 R4S Owners Read [here](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/R4S%20CPU%20Optimization) instead.
