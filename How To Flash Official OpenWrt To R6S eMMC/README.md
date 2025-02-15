@@ -22,8 +22,10 @@ I figured out how to flash the stable official OpenWrt released on Feb 3, 2025 t
 * Open and edit `eflasher.conf` with a text editor inside the same directory here.
 	* Set “autoStart=” to the name of your image file
 		* In my example it is 
-			* `autoStart=openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img.gz`
-		* Save
+```
+autoStart=openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img.gz
+```
+* Save your edits above!
 * Eject the MicroSD card after your edits.
 * Insert the MicroSD card into your NanoPi R6S
 * Power the R6S on. it will automatically install your firmware. You can watch the installation progress by observing the LEDs’ status.
