@@ -21,7 +21,7 @@ nano checkaffinity.sh
 ```
 Paste in this script. CTRL+O to save.
 ```
-#!/bin/bash
+#!/bin/sh
 
 # Save the output of /proc/interrupts in a variable
 interrupts=$(cat /proc/interrupts)
