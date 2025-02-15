@@ -3,6 +3,8 @@ As of February 3, 2024 the NanoPi R6S now has an official stable OpenWrt release
 
 View the firmware downloads here: https://downloads.openwrt.org/
 
+The R6S images are located under `Stable Release > rockchip > armv8`
+
 I'd recommend the squashfs image if you're new at this. The squashfs image allows for factory reset and full system backup and easy future firmware updates with the sysupgrade tool. The only con is it has limited storage space. You can read more about the pros and cons of ext vs squshfs [here](https://openrouters.com/docs/openwrt-chose-ext4-or-squashfs-image/).
 
 
