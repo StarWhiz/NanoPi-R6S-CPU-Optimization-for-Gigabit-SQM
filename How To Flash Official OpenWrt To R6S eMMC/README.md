@@ -43,3 +43,24 @@ The last step you need to do is to enable Packet Steering on all CPUS to go past
 * This is done under Network > Interfaces > Global network options tab
 
  ![Enable Packet Steering](./EnablePacketSteeringAllCPUs.png)
+
+# DD Method
+If you don't want to use the method above you can try the way dsouza showed me on the OpenWrt forums below is what he had to say. Keep in mind the DD method will no longer allow you to boot from SD card so stick to the FriendlyWrt method above if you want to preserve that ability.
+
+Source: https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/487
+
+```
+You can also use dd to flash an OpenWrt sysupgrade image to eMMc. Personally I think it is much easier and faster, specially if you are already running OpenWrt from SD card. Example:
+
+cd /tmp
+wget https://downloads.openwrt.org/releases/24.10.0/targets/rockchip/armv8/openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img.gz
+gzip -d openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img.gz
+dd if=openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img of=/dev/mmcblk1 bs=1M
+reboot
+
+To transfer the configuration, just backup from OpenWrt running from the SD card and restore after you boot OpenWrt from eMMC.
+
+Be aware that once you have OpenWrt on eMMC, you will not be able to boot from SD card anymore (OpenWrt bootloader does not seem to give preference to SD cart when booting).
+
+For this reason I prefer booting OpenWrt from the SD card, and mount eMMC as ext4 storage.
+```
