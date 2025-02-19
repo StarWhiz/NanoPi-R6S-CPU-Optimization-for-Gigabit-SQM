@@ -7,10 +7,11 @@ The R6S images are located under `Stable Release > rockchip > armv8`
 
 I'd recommend the squashfs image if you're new at this. The squashfs image allows for factory reset and full system backup and easy future firmware updates with the sysupgrade tool. The only con is it has limited storage space. You can read more about the pros and cons of ext vs squshfs [here](https://openrouters.com/docs/openwrt-chose-ext4-or-squashfs-image/).
 
-
 With the official OpenWrt image there's no longer a need to do the [CPU performance tweaks](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM)! 
 
 I figured out how to flash the stable official OpenWrt released on Feb 3, 2025 that includes the R6S by referencing this [section of FriendlyElec's guide](https://wiki.friendlyelec.com/wiki/index.php/NanoPi_R6S#Flash_third_party_OS_.28Image_file.29_to_eMMC).
+
+Optional Alternative: If you're new ignore this alt method. For advanced  users a quicker method you can use is the [DD method here](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/487) if you already have FriendlyWrt running on eMMC, but you'd lose the ability to boot from MicroSD card afterwards.
 
 # Preparing MicroSD Card for Flash to eMMC
 * Using BalenaEtcher, flash the MicroSD Card with any of the eflasher firmwares available at http://download.friendlyelec.com/NanoPiR6S 
