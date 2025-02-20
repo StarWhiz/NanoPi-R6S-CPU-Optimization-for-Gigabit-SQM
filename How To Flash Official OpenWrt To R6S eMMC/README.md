@@ -33,6 +33,7 @@ autoStart=openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgr
 * Insert the MicroSD card into your NanoPi R6S
 * Power the R6S on. it will automatically install your firmware. You can watch the installation progress by observing the LEDs’ status.
 * Congrats you've flashed OpenWrt firmware on the R6S!'
+* After installation remove the microSD card from your R6S otherwise it will boot from MicroSD instead of eMMC.
 * Default Logins
 	* user = root
 	* pass = password
