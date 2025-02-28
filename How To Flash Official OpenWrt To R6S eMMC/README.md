@@ -1,5 +1,5 @@
 # Introduction
-As of February 3, 2024 the NanoPi R6S now has an official stable OpenWrt release starting with version 24.10.0.
+As of February 3, 2025 the NanoPi R6S now has an official stable OpenWrt release starting with version 24.10.0.
 
 View the firmware downloads here: https://downloads.openwrt.org/
 
