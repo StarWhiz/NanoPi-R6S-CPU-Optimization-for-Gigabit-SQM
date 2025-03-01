@@ -174,29 +174,10 @@ After you are done editing. Press CTRL+O to save and exit nano.
 
 Reboot your NanoPI R6s. That's all you need to do!
 
-If you followed the previous section and want to check if the CPU affinities did change.
+You can check if the CPU affinities did change by SSHing back into your NanoPi R6s and go through the [previous section](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/README.md#checking-current-irqs)
 
-SSH back into your NanoPi R6s and run
-
-```
-./checkaffinity.sh
-```
 
 It should be different from before and similar to the values you had just set in eithe option 1, 2a or 2b!
-
-**output of option 1**
-```
-CPU Affinity for ETH0 1gbs LAN 63 is 01
-CPU Affinity for ETH0 1gbs LAN 64 is ff
-CPU Affinity for ETH1 2.5gbs LAN was 02
-CPU Affinity for ETH2 2.5gbs WAN was 04
-CPU cores assigned to ETH0 queue rx-0 is: c0
-CPU cores assigned to ETH1 queue rx-0 is: c0
-CPU cores assigned to ETH2 queue rx-0 is: c0
-CPU cores assigned to ETH0 queue tx-0 is: 30
-CPU cores assigned to ETH1 queue tx-0 is: 30
-CPU cores assigned to ETH2 queue tx-0 is: 30
-```
 
 That's it! Congratulations. Go ahead and test out cake SQM at higher bandwidths!
 
