@@ -54,69 +54,6 @@ opkg update
 opkg  install nano
 ```
 
-From here you can skip to this [section](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/blob/main/README.md#the-actual-fix-to-optimize-nanopi-r6s-to-go-beyond-1400-mbps-w-cake-sqm) if you're not interested in checking if the solution worked or not and want to speedrun this. Otherwise, continue reading.
-
-## How to check the current IRQ CPU affinitys
-You don't need to do this step but it helps you confirm if your CPU affinity is indeed fixed.
-
-First create an executable script with the commands below
-```
-touch checkaffinity.sh
-chmod +x checkaffinity.sh
-nano checkaffinity.sh
-```
-
-A new text editor will open up. Paste in this checkaffinity.sh script below.
-```
-#!/bin/sh
-
-# Save the output of /proc/interrupts in a variable
-interrupts=$(cat /proc/interrupts)
-
-# Extract the numbers associated with eth1-0 and eth2-0 using grep and awk
-irqs=$(grep "eth0" /proc/interrupts | awk '{print $1}' | tr -d ':')
-eth1_0=$(echo "$interrupts" | grep "eth1-0" | awk '{print $1}' | tr -d ':')
-eth2_0=$(echo "$interrupts" | grep "eth2-0" | awk '{print $1}' | tr -d ':')
-
-# Display current CPU cores assigned to current IRQs and queues
-for irq in $irqs; do
-    echo "CPU Affinity for ETH0 1gbs LAN $irq is $(cat /proc/irq/$irq/smp_affinity)"
-done
-
-echo "CPU Affinity for ETH1 2.5gbs LAN was $(cat /proc/irq/"$eth1_0"/smp_affinity)"
-echo "CPU Affinity for ETH2 2.5gbs WAN was $(cat /proc/irq/"$eth2_0"/smp_affinity)"
-echo "CPU cores assigned to ETH0 queue rx-0 is: $(cat /sys/class/net/eth0/queues/rx-0/rps_cpus)"
-echo "CPU cores assigned to ETH1 queue rx-0 is: $(cat /sys/class/net/eth1/queues/rx-0/rps_cpus)"
-echo "CPU cores assigned to ETH2 queue rx-0 is: $(cat /sys/class/net/eth2/queues/rx-0/rps_cpus)"
-echo "CPU cores assigned to ETH0 queue tx-0 is: $(cat /sys/class/net/eth0/queues/tx-0/xps_cpus)"
-echo "CPU cores assigned to ETH1 queue tx-0 is: $(cat /sys/class/net/eth1/queues/tx-0/xps_cpus)"
-echo "CPU cores assigned to ETH2 queue tx-0 is: $(cat /sys/class/net/eth2/queues/tx-0/xps_cpus)"
-```
-Press CTRL+O to save and exit nano.
-
-You can now run the script with
-```
-./checkaffinity.sh
-```
-
-**The default output from ./checkaffinity.sh**
-```
-CPU Affinity for ETH0 1gbs LAN 63 is 02
-CPU Affinity for ETH0 1gbs LAN 64 is ff
-CPU Affinity for ETH1 2.5gbs LAN was 04
-CPU Affinity for ETH2 2.5gbs WAN was 08
-CPU cores assigned to ETH0 queue rx-0 is: fe
-CPU cores assigned to ETH1 queue rx-0 is: fe
-CPU cores assigned to ETH2 queue rx-0 is: fe
-CPU cores assigned to ETH0 queue tx-0 is: 00
-CPU cores assigned to ETH1 queue tx-0 is: 00
-CPU cores assigned to ETH2 queue tx-0 is: 00
-```
-
-The output tells you your current CPU Affiniity for IRQs on all interfaces!
-
-Now you're ready to see the change!
-
 ## The actual fix to optimize NanoPi R6S to go beyond 1400 Mbps w/ cake SQM
 Okay let's begin!
 
@@ -257,3 +194,68 @@ Credits to the following people who helped made the openwrt document linked here
 Credits to [choppyc](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/87?u=starwhiz) for the alternative smp-affinities
 
 This allowed me to come up with a better solution for the R6S. Thank you!
+
+# Outdated Scripts Ignore this. It's here for past reference
+
+How to check the current IRQ CPU affinitys
+
+You don't need to do this step but it helps you confirm if your CPU affinity is indeed fixed.
+
+First create an executable script with the commands below
+```
+touch checkaffinity.sh
+chmod +x checkaffinity.sh
+nano checkaffinity.sh
+```
+
+A new text editor will open up. Paste in this checkaffinity.sh script below.
+```
+#!/bin/sh
+
+# Save the output of /proc/interrupts in a variable
+interrupts=$(cat /proc/interrupts)
+
+# Extract the numbers associated with eth1-0 and eth2-0 using grep and awk
+irqs=$(grep "eth0" /proc/interrupts | awk '{print $1}' | tr -d ':')
+eth1_0=$(echo "$interrupts" | grep "eth1-0" | awk '{print $1}' | tr -d ':')
+eth2_0=$(echo "$interrupts" | grep "eth2-0" | awk '{print $1}' | tr -d ':')
+
+# Display current CPU cores assigned to current IRQs and queues
+for irq in $irqs; do
+    echo "CPU Affinity for ETH0 1gbs LAN $irq is $(cat /proc/irq/$irq/smp_affinity)"
+done
+
+echo "CPU Affinity for ETH1 2.5gbs LAN was $(cat /proc/irq/"$eth1_0"/smp_affinity)"
+echo "CPU Affinity for ETH2 2.5gbs WAN was $(cat /proc/irq/"$eth2_0"/smp_affinity)"
+echo "CPU cores assigned to ETH0 queue rx-0 is: $(cat /sys/class/net/eth0/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH1 queue rx-0 is: $(cat /sys/class/net/eth1/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH2 queue rx-0 is: $(cat /sys/class/net/eth2/queues/rx-0/rps_cpus)"
+echo "CPU cores assigned to ETH0 queue tx-0 is: $(cat /sys/class/net/eth0/queues/tx-0/xps_cpus)"
+echo "CPU cores assigned to ETH1 queue tx-0 is: $(cat /sys/class/net/eth1/queues/tx-0/xps_cpus)"
+echo "CPU cores assigned to ETH2 queue tx-0 is: $(cat /sys/class/net/eth2/queues/tx-0/xps_cpus)"
+```
+Press CTRL+O to save and exit nano.
+
+You can now run the script with
+```
+./checkaffinity.sh
+```
+
+**The default output from ./checkaffinity.sh**
+```
+CPU Affinity for ETH0 1gbs LAN 63 is 02
+CPU Affinity for ETH0 1gbs LAN 64 is ff
+CPU Affinity for ETH1 2.5gbs LAN was 04
+CPU Affinity for ETH2 2.5gbs WAN was 08
+CPU cores assigned to ETH0 queue rx-0 is: fe
+CPU cores assigned to ETH1 queue rx-0 is: fe
+CPU cores assigned to ETH2 queue rx-0 is: fe
+CPU cores assigned to ETH0 queue tx-0 is: 00
+CPU cores assigned to ETH1 queue tx-0 is: 00
+CPU cores assigned to ETH2 queue tx-0 is: 00
+```
+
+The output tells you your current CPU Affiniity for IRQs on all interfaces!
+
+Now you're ready to see the change!
+
