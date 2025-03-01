@@ -54,6 +54,35 @@ opkg update
 opkg  install nano
 ```
 
+# Checking current IRQs
+```
+grep eth /proc/interrupts
+
+### Example Output Below Yours may differ:
+root@openWrt:~# grep eth /proc/interrupts
+ 58:         11   18169896          0          0          0  837686533          0          0     GICv3 266 Level     eth0
+ 59:          0          0          0          0          0          0          0          0     GICv3 265 Level     eth0
+ 96:          0          0   45073121          0          0          0 1517259821          0   ITS-MSI 428343296 Edge      eth1
+ 97:          0          0          0    6991360          0          0          0  350786836   ITS-MSI 570949632 Edge      eth2
+
+
+root@openWrt:~# cat /proc/irq/58/smp_affinity
+20
+root@openWrt:~# cat /proc/irq/96/smp_affinity
+40
+root@openWrt:~# cat /proc/irq/97/smp_affinity
+80
+
+# Only cat the IRQs that have numbers. I ignored 59 above because it has 0s across the board. As you can see these are the current affinities.
+
+# Optional listing CPU cores assigned to current queues
+root@openWrt:~# cat /sys/class/net/eth0/queues/rx-0/rps_cpus
+ff
+root@openWrt:~# cat /sys/class/net/eth1/queues/rx-0/rps_cpus
+ff
+```
+
+
 ## The actual fix to optimize NanoPi R6S to go beyond 1400 Mbps w/ cake SQM
 Okay let's begin!
 
