@@ -7,7 +7,7 @@ The R6S images are located under `Stable Release > rockchip > armv8`
 
 I'd recommend the squashfs image if you're new at this. The squashfs image allows for factory reset and full system backup and easy future firmware updates with the sysupgrade tool. The only con is it has limited storage space. You can read more about the pros and cons of ext vs squshfs [here](https://openrouters.com/docs/openwrt-chose-ext4-or-squashfs-image/).
 
-With the official OpenWrt image there's no longer a need to do the [CPU performance tweaks](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM)! 
+With the official OpenWrt image there's no longer a need to do the [CPU performance tweaks](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM)! Okay I may be wrong because a [user](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/489?u=starwhiz) reported that they still needed to do my performance tweaks to do SQM with 2Gbps Symmetrical.
 
 I figured out how to flash the stable official OpenWrt released on Feb 3, 2025 that includes the R6S by referencing this [section of FriendlyElec's guide](https://wiki.friendlyelec.com/wiki/index.php/NanoPi_R6S#Flash_third_party_OS_.28Image_file.29_to_eMMC).
 
