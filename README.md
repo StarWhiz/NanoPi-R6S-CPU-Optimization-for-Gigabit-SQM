@@ -84,6 +84,8 @@ ff
 
 
 ## The actual fix to optimize NanoPi R6S to go beyond 1400 Mbps w/ cake SQM
+As of 2025.02.25 [someone reported](https://forum.openwrt.org/t/nanopi-r6s-with-openwrt/167611/489?u=starwhiz) that with these tweaks they could go up to 2 Gbps SQM with symmetric fiber!
+
 Okay let's begin!
 
 Edit the file in /etc/hotplug.d/net/40-net-smp-affinity with
