@@ -20,6 +20,10 @@ Optional Alternative: If you're new ignore this alt method. For advanced  users 
 * After flashing the image with BalenaEtcher, you should see a drive with the name of `FriendlyARM` show up in your file explorer. Nagivate and open this directory.
 * Download the official OpenWrt Image for your Nano Pi R6S [here](https://downloads.openwrt.org/)
 	* At the time of writing this guide. I'm using the `openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img.gz` image which is the first stable release of OpenWrt that includes the R6S!
+
+> [!IMPORTANT]  
+> If you're on Windows 11 or Mac. The operating system might not be able to read the microSD card after flashing the image. To proceed with the steps below you might need to plug in the newly image MicroSD to a linux machine (or your own machine using a live USB ubuntu on your own machine), or a Windows 10 machines where it would recognize the 5GB partition.
+
 * Copy `openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgrade.img.gz` into the root of the `FriendlyARM` drive.
  ![SDCardRoot](./FriendlyARMSDModifications.png)
 * Open and edit `eflasher.conf` with a text editor inside the same directory here.
