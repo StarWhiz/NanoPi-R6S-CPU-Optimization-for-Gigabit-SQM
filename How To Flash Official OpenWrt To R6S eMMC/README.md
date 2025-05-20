@@ -44,7 +44,7 @@ autoStart=openwrt-24.10.0-rockchip-armv8-friendlyarm_nanopi-r6s-squashfs-sysupgr
 	* router IP = 192.168.1.1
 
 # Enable Packet Steering to go past 700 Mbps SQM
-The last step you need to do is to enable Packet Steering on all CPUS to go past 700 Mbps SQM without the CPU Performance tweaks. I personally got 1400 Mbps with SQM on which is the most my own ISP provides.
+The last step you need to do is to enable Packet Steering on all CPUS to go past 700 Mbps SQM without the CPU Performance tweaks. I personally got 1400 Mbps with SQM on which is the most my own ISP provides. You can figure out how to do SQM via my website at www.stoplagging.com or openWrt's official instructions https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm
 
 * This is done under Network > Interfaces > Global network options tab
 
