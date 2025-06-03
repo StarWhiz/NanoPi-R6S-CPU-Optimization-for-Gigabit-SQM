@@ -163,6 +163,18 @@ friendlyarm,nanopi-r6s)
         set_interface_core 8 "eth2"
         ;;
 ```
+I modified mine to. It doesn't have xps_cpus on the tx for eth1 and eth2 like on FriendlyWrt because it doesn't seem to exist.
+```
+friendlyarm,nanopi-r6s)
+        set_interface_core 1 "eth0"
+        echo c0 > /sys/class/net/eth0/queues/rx-0/rps_cpus
+        echo 30 > /sys/class/net/eth0/queues/tx-0/xps_cpus
+        set_interface_core 2 "eth1"
+        echo c0 > /sys/class/net/eth1/queues/rx-0/rps_cpus
+        set_interface_core 4 "eth2"
+        echo c0 > /sys/class/net/eth2/queues/rx-0/rps_cpus
+        ;;
+```
 However it might be experimenting changing that to `20`, `40` and `80` so that the performance cores are assigned instead of the slower `2`, `4`, and `8` cores if it seems packet steering isn't working that well.
 ```
 ## Performance Tweaks Quick Reference R6S
