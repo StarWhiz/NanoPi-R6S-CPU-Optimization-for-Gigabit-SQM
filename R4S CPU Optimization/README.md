@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> As of March 5, 2026, Openwrt 25.12.0 already has the CPU tweaks for this device. It's no longer necessary to do these performance tweaks.
+> 
+> Get it here by typing in R4S!: https://openwrt.github.io/firmware-selector-openwrt-org/?version=25.12.0
+
 # Performance Tweak for R4S
 
 This guide is based on my [main guide for the R6S](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM) except this guide is for the R4S instead. This applies to FriendlyWrt firmware only. Official OpenWrt 24.10.0 released on Feb 03, 2025 is already optimized and only needs packet steering (Enabled All CPUs) checked under Network > Interfaces > Global network options tab.
