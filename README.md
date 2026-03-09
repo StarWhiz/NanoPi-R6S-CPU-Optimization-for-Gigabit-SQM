@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> As of March 5, 2026, Openwrt 25.12.0 already has the CPU tweaks for this device. It's no longer necessary to do these performance tweaks. I noticed that only my fast cores are being utilized in the libreqQoS bufferbloat tests which is a good thing.
+> 
+> Get it here by typing in R6S!: https://openwrt.github.io/firmware-selector-openwrt-org/?version=25.12.0
+
 # Other Guides
 * [How to flash official OpenWrt image to R6S eMMC](https://github.com/StarWhiz/NanoPi-R6S-CPU-Optimization-for-Gigabit-SQM/tree/main/How%20To%20Flash%20Official%20OpenWrt%20To%20R6S%20eMMC)
 	* If you use the official OpenWrt image for your Nano Pi the performance tweaks below are not needed.
