@@ -2,6 +2,8 @@
 > As of March 5, 2026, Openwrt 25.12.0 already has the CPU tweaks for this device. It's no longer necessary to do these performance tweaks.
 > 
 > Get it here by typing in R4S!: https://openwrt.github.io/firmware-selector-openwrt-org/?version=25.12.0
+>
+>  (if unsure choose squashfs image)
 
 # Performance Tweak for R4S
 
